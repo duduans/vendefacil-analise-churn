@@ -1,0 +1,1299 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Roteiro de Apresentação — Grupo 7 · VendeFácil</title>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<style>
+  :root{
+    --ink:#0f1f38;
+    --muted:#5d7088;
+    --navy:#17365d;
+    --blue:#1769aa;
+    --bg:#f4f6fa;
+    --line:#d8dfeb;
+    --card:#ffffff;
+    --gold:#f5b942;
+    --green:#2f927e;
+    --red:#c44d58;
+    --violet:#8b5cf6;
+    --accent-2:#c9b98d;
+    --green-soft:#e8f5f1;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.65 "Segoe UI",Roboto,Inter,Arial,sans-serif;
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    background:var(--bg);
+    padding:46px max(5vw,26px) 30px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    letter-spacing:.18em;text-transform:uppercase;
+    font-size:.72rem;font-weight:700;color:var(--green);
+    margin-bottom:8px;
+  }
+  h1{
+    font-size:clamp(1.8rem,3.8vw,2.6rem);
+    line-height:1.1;margin:8px 0 12px;font-weight:300;
+    letter-spacing:.02em;
+  }
+  h1 strong{font-weight:700;color:var(--navy)}
+  .lead{
+    font-size:1rem;max-width:900px;color:var(--muted);
+    line-height:1.65;
+  }
+  .authors{
+    margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;
+  }
+  .author-tag{
+    display:inline-block;
+    background:#fff;
+    border:1px solid var(--line);
+    color:var(--navy);
+    font-size:.8rem;
+    font-weight:600;
+    padding:6px 14px;
+    border-radius:99px;
+  }
+  .actions{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap}
+  .btn{
+    background:var(--green);color:#fff;border:0;
+    padding:12px 22px;border-radius:6px;font-weight:600;
+    cursor:pointer;font-size:.9rem;letter-spacing:.02em;
+    transition:all .15s;
+  }
+  .btn:hover{background:#267a68;transform:translateY(-1px)}
+  .btn.alt{
+    background:#fff;color:var(--green);
+    border:1px solid var(--green);
+  }
+  .btn.alt:hover{background:var(--green-soft);color:#267a68}
+  .btn:disabled{opacity:.65;cursor:wait}
+
+  /* ============ LAYOUT ============ */
+  .wrap{max-width:1140px;margin:0 auto;padding:26px 22px 60px}
+
+  /* ============ TIMER BAR ============ */
+  .timer-bar{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 20px;
+    margin:8px 0 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+    box-shadow:0 2px 8px rgba(15,31,56,.04);
+  }
+  .timer-info{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .timer-badge{
+    background:var(--green-soft);color:var(--green);
+    font-size:.75rem;font-weight:800;letter-spacing:.05em;
+    padding:5px 12px;border-radius:99px;text-transform:uppercase;
+  }
+  .timer-text{font-size:.88rem;color:var(--muted)}
+  .timer-text strong{color:var(--navy)}
+  .timer-controls{display:flex;gap:8px;align-items:center}
+  .timer-btn{
+    background:#f0f4f8;border:0;padding:8px 14px;border-radius:6px;
+    font-weight:600;font-size:.82rem;color:var(--navy);
+    cursor:pointer;transition:all .15s;
+  }
+  .timer-btn:hover{background:#e2e8f0}
+  .timer-btn.primary{background:var(--green);color:#fff}
+  .timer-btn.primary:hover{background:#267a68}
+  .timer-display{
+    font-family:ui-monospace,Consolas,monospace;
+    font-size:1.3rem;font-weight:800;color:var(--navy);
+    min-width:70px;text-align:center;
+  }
+
+  /* ============ TOC ============ */
+  .toc{display:flex;gap:8px;overflow:auto;padding:0 0 22px;flex-wrap:wrap}
+  .toc a{
+    white-space:nowrap;text-decoration:none;
+    background:#fff;color:var(--ink);
+    padding:8px 14px;border-radius:20px;
+    font-weight:500;font-size:.82rem;
+    border:1px solid var(--line);
+    transition:all .15s;
+  }
+  .toc a:hover{border-color:var(--green);color:var(--green)}
+
+  /* ============ SECTION ============ */
+  .section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:28px 30px;
+    margin:16px 0;
+    box-shadow:0 2px 12px rgba(15,31,56,.04);
+  }
+  .section-header{
+    margin-bottom:22px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .section-header-left{flex:1;min-width:200px}
+  .section-eyebrow{
+    font-size:.68rem;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--green);
+    margin-bottom:6px;
+  }
+  h2{
+    font-size:1.35rem;font-weight:600;color:var(--ink);
+    margin:0;letter-spacing:.01em;
+  }
+  h3{font-size:1rem;font-weight:700;color:var(--navy);margin:20px 0 8px}
+  h4{font-size:.95rem;font-weight:600;color:var(--ink);margin:14px 0 6px}
+  p{margin:8px 0 12px;line-height:1.7}
+
+  /* ============ SLIDE METADATA ============ */
+  .slide-meta{display:flex;gap:8px;align-items:center;flex-shrink:0}
+  .slide-time{
+    background:#fff9ec;color:#7a5a00;
+    font-size:.72rem;font-weight:800;letter-spacing:.05em;
+    padding:5px 12px;border-radius:99px;text-transform:uppercase;white-space:nowrap;
+  }
+  .slide-num{
+    background:var(--navy);color:#fff;
+    font-size:.72rem;font-weight:800;padding:5px 10px;
+    border-radius:99px;white-space:nowrap;
+  }
+  .speaker-badge{
+    background:var(--green-soft);color:var(--green);
+    font-size:.72rem;font-weight:800;letter-spacing:.05em;
+    padding:5px 12px;border-radius:99px;text-transform:uppercase;white-space:nowrap;
+  }
+  .speaker-badge.violet{
+    background:#f3e8ff;color:#5b21b6;
+  }
+
+  /* ============ SPEECH BOX ============ */
+  .speech{
+    background:#fbfcfe;
+    border-left:4px solid var(--green);
+    border-radius:0 10px 10px 0;
+    padding:20px 24px;margin:16px 0;
+    font-size:.95rem;line-height:1.85;
+    color:var(--ink);position:relative;
+  }
+  .speech::before{
+    content:"🎤";position:absolute;left:-14px;top:16px;
+    background:#fff;padding:3px;border-radius:50%;font-size:1rem;
+  }
+  .speech em{color:var(--green);font-style:normal;font-weight:600}
+  .speech strong{color:var(--navy);font-weight:700}
+  .speech .pause{
+    color:var(--muted);font-style:italic;font-size:.85rem;
+    display:block;margin:8px 0;padding-left:14px;
+    border-left:2px solid var(--line);
+  }
+  .speech.violet{border-left-color:var(--violet)}
+  .speech.violet::before{content:"🎤"}
+  .speech.violet em{color:var(--violet)}
+  .anchor{
+    background:#fff9ec;
+    border:1px dashed var(--gold);
+    border-radius:8px;
+    padding:10px 16px;
+    margin:12px 0 0;
+    font-size:.9rem;
+    color:#7a5a00;
+    font-weight:600;
+    font-style:italic;
+  }
+  .anchor::before{
+    content:"🔑 FRASE-ÂNCORA: ";
+    font-weight:800;
+    font-style:normal;
+    letter-spacing:.04em;
+  }
+
+  /* ============ SLIDE CONTENT ============ */
+  .slide-content{
+    background:#fff;border:1px solid var(--line);
+    border-radius:8px;padding:14px 18px;margin:12px 0;
+    font-size:.88rem;color:var(--muted);line-height:1.6;
+  }
+  .slide-content strong{color:var(--navy)}
+  .slide-content::before{
+    content:"O QUE MOSTRAR NA TELA";display:block;
+    font-size:.66rem;font-weight:800;letter-spacing:.1em;
+    color:var(--green);margin-bottom:8px;
+  }
+
+  /* ============ TIPS ============ */
+  .tips{
+    background:#fff9ec;border:1px solid #f4d989;
+    border-radius:10px;padding:14px 18px;margin:12px 0;
+    font-size:.88rem;line-height:1.65;
+  }
+  .tips::before{
+    content:"💡 DICA";display:block;
+    font-size:.68rem;font-weight:800;letter-spacing:.1em;
+    color:#7a5a00;margin-bottom:6px;
+  }
+
+  /* ============ CARDS ============ */
+  .grid{display:grid;gap:14px}
+  .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+  .card{
+    border:1px solid var(--line);
+    border-radius:12px;padding:18px 20px;background:#fbfcfe;
+  }
+  .card.mint{border-top:4px solid var(--green);background:#fff}
+  .card.gold{border-top:4px solid var(--gold);background:#fff}
+  .card.red{border-top:4px solid var(--red);background:#fff}
+  .card.violet{border-top:4px solid var(--violet);background:#fff}
+
+  /* ============ CALLOUT ============ */
+  .callout{
+    background:var(--green-soft);
+    border-left:4px solid var(--green);
+    border-radius:0 10px 10px 0;
+    padding:16px 20px;margin:16px 0;
+    font-size:.92rem;line-height:1.65;
+  }
+  .callout strong{color:var(--navy)}
+  .callout.gold{background:#fff9ec;border-left-color:var(--gold)}
+  .callout.warn{background:#fdf0f1;border-left-color:var(--red)}
+  .callout.info{background:#edf6ff;border-left-color:var(--blue)}
+  .callout.violet{background:#f3e8ff;border-left-color:var(--violet)}
+
+  /* ============ TABLES ============ */
+  .table-wrap{overflow:auto;margin:14px 0}
+  table{border-collapse:collapse;width:100%;font-size:.88rem}
+  th{
+    background:#fbfcfe;color:var(--navy);
+    text-align:left;padding:12px 14px;
+    font-weight:700;font-size:.78rem;
+    text-transform:uppercase;letter-spacing:.06em;
+    border-bottom:2px solid var(--line);
+    white-space:nowrap;
+  }
+  td{
+    padding:11px 14px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  tr:hover td{background:#fbfcfe}
+
+  /* ============ FOOTER ============ */
+  .footer{
+    color:var(--muted);text-align:center;
+    padding:24px;font-size:.85rem;
+    border-top:1px solid var(--line);
+    margin-top:24px;
+  }
+
+  @media(max-width:820px){
+    .grid.two,.grid.three{grid-template-columns:1fr}
+    .section{padding:22px}
+    header{padding:32px 22px}
+    .section-header{flex-direction:column;align-items:flex-start}
+  }
+  @media print{
+    header{padding:24px;background:#fff!important;border-bottom:2px solid var(--green)}
+    .actions,.toc,.timer-bar{display:none}
+    .section{break-inside:avoid;box-shadow:none;margin:10px 0}
+    .speech{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Projeto Integrador · Trilha Dados · Apresentação Final</div>
+  <h1>Roteiro de Apresentação<br><strong>Grupo 7 · VendeFácil</strong></h1>
+  <p class="lead">
+    Roteiro completo para a apresentação final — <strong>Dashboard Executivo +
+    Agente Text-to-SQL</strong>. Cada integrante fala <strong>uma única vez</strong>,
+    com tempo contínuo. Duração-alvo: <strong>12 minutos</strong>
+    (máximo 15 com perguntas).
+  </p>
+  <div class="authors">
+    <span class="author-tag">Fernanda Falchetto</span>
+    <span class="author-tag">Lucas Ramalho</span>
+    <span class="author-tag">Eduardo Jungmann</span>
+    <span class="author-tag">Marcelo Carvalho</span>
+    <span class="author-tag">Bruno Passo</span>
+    <span class="author-tag">Josimar Torre</span>
+  </div>
+  <div class="actions">
+    <button class="btn" onclick="exportDOCX(event)">⬇ Baixar em Word (.docx)</button>
+    <button class="btn alt" onclick="window.print()">🖨 Baixar em PDF</button>
+  </div>
+</header>
+
+<main class="wrap" id="report">
+
+<!-- ============= TIMER BAR ============= -->
+<div class="timer-bar">
+  <div class="timer-info">
+    <span class="timer-badge">Cronômetro</span>
+    <span class="timer-text">
+      Duração-alvo: <strong>12 min</strong> · Máximo: <strong>15 min</strong>
+    </span>
+  </div>
+  <div class="timer-controls">
+    <div class="timer-display" id="timerDisplay">00:00</div>
+    <button class="timer-btn primary" id="btnStart" onclick="toggleTimer()">Iniciar</button>
+    <button class="timer-btn" onclick="resetTimer()">Zerar</button>
+  </div>
+</div>
+
+<nav class="toc">
+  <a href="#estrutura">Estrutura</a>
+  <a href="#fernanda-abre">1. Fernanda (abre)</a>
+  <a href="#lucas">2. Lucas</a>
+  <a href="#eduardo">3. Eduardo</a>
+  <a href="#bruno">4. Bruno Passo</a>
+  <a href="#josimar">5. Josimar Torre</a>
+  <a href="#marcelo">6. Marcelo — Agente</a>
+  <a href="#fernanda-fecha">7. Fernanda (encerra)</a>
+  <a href="#qa">8. Q&A crítico</a>
+  <a href="#checklist">Checklist</a>
+</nav>
+
+<!-- ============================================= -->
+<section class="section" id="estrutura">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-eyebrow">Visão Geral</div>
+      <h2>Estrutura da Apresentação</h2>
+    </div>
+  </div>
+
+  <p>
+    A apresentação foi reorganizada para que <strong>cada integrante fale uma
+    única vez</strong>, com tempo contínuo. Fernanda abre e encerra (duas
+    intervenções curtas); os demais falam uma vez só. Isso facilita a gestão
+    do tempo e evita quebras no ritmo.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Apresentador</th><th>Conteúdo</th><th>Tempo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>Fernanda</strong></td>
+          <td>Abertura + problema + pergunta central</td>
+          <td>2 min</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>Lucas</strong></td>
+          <td>Dados, método e visão geral do dashboard</td>
+          <td>1,5 min</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>Eduardo</strong></td>
+          <td>Insight 1 — Uso + Insight 2 — Atraso</td>
+          <td>2 min</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Bruno Passo</strong></td>
+          <td>Insight 3 — Plano + Insight 4 — Canal</td>
+          <td>1,5 min</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Josimar Torre</strong></td>
+          <td>Recomendações consolidadas + meta</td>
+          <td>1,5 min</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>Marcelo</strong></td>
+          <td>Agente Text-to-SQL (contexto + demo ao vivo)</td>
+          <td>2,5 min</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><strong>Fernanda</strong></td>
+          <td>Encerramento</td>
+          <td>1 min</td>
+        </tr>
+        <tr>
+          <td>—</td>
+          <td><strong>Total</strong></td>
+          <td>—</td>
+          <td><strong>~12 min</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <strong>Regra de ouro:</strong> cada pessoa tem um bloco contínuo — sem
+    interrupções nem "passa a palavra" no meio. Ao terminar, olha para o
+    próximo e passa. Transições limpas, ritmo fluido.
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section class="section" id="fernanda-abre">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-eyebrow">Bloco 1</div>
+      <h2>Abertura · Problema · Pergunta Central</h2>
+    </div>
+    <div class="slide-meta">
+      <span class="slide-time">2 min</span>
+      <span class="speaker-badge">Fernanda</span>
+      <span class="slide-num">Slides 1-2</span>
+    </div>
+  </div>
+
+  <div class="slide-content">
+    <strong>Slide 1:</strong> Home — título do projeto + integrantes.<br>
+    <strong>Slide 2:</strong> KPIs de contexto (360 clientes · 78 cancelamentos · 21,67% churn · R$ 781,49 mil MRR Total) + pergunta central.
+  </div>
+
+  <h3>Fala contínua (2 min)</h3>
+  <div class="speech">
+    <strong>"Bom dia a todos.</strong> Somos o Grupo 7 — Fernanda, Lucas, Eduardo,
+    Marcelo, Bruno e Josimar. Nosso projeto integrador analisou a base de
+    clientes da <strong>VendeFácil</strong>, uma empresa fictícia de SaaS B2B que
+    oferece uma plataforma de e-commerce para pequenas e médias lojas brasileiras.
+    <span class="pause">[pausa curta]</span>
+    A VendeFácil cresceu em aquisição ao longo de 2025, mas a liderança percebeu
+    um movimento estranho: <em>a base cresceu até agosto e depois estagnou.</em>
+    No ano, a empresa teve <strong>360 clientes</strong> e
+    <strong>78 cancelamentos</strong> — uma taxa de churn de
+    <strong>21,67%</strong>. Isso significa que <em>1 em cada 5 clientes
+    cancelou</em>. O <strong>MRR total do ano foi de R$ 781 mil</strong> —
+    cerca de R$ 65 mil por mês em média.
+    <span class="pause">[pausa]</span>
+    A pergunta que guiou todo o projeto foi: <strong>quais sinais de uso, atraso
+    de pagamento e satisfação estão mais associados ao cancelamento — e como
+    isso varia por plano e canal de aquisição?</strong>
+    <span class="pause">[pausa]</span>
+    Ao longo dos próximos 12 minutos, vamos mostrar o que os dados revelaram —
+    <strong>quatro insights</strong> que mudam a forma como a empresa deve olhar
+    para retenção — e, no final, apresentar uma <strong>ferramenta que criamos</strong>
+    para que a própria diretoria consulte os dados sem depender de analistas.
+    <span class="pause">[transição]</span>
+    Para começar, o Lucas vai explicar como chegamos até aqui."
+  </div>
+
+  <div class="anchor">
+    A VendeFácil não precisa de mais clientes. Precisa reter melhor os 360 que já tem.
+  </div>
+
+  <div class="tips">
+    <strong>Dica de condução:</strong> comece pela pergunta, não pela empresa.
+    Anuncie o "presente final" (agente) no começo — cria expectativa na banca.
+    Fale os nomes dos integrantes com calma: "Bruno Passo, Josimar Torre".
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section class="section" id="lucas">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-eyebrow">Bloco 2</div>
+      <h2>Dados, Método e Visão Geral do Dashboard</h2>
+    </div>
+    <div class="slide-meta">
+      <span class="slide-time">1,5 min</span>
+      <span class="speaker-badge">Lucas</span>
+      <span class="slide-num">Slides 3-4</span>
+    </div>
+  </div>
+
+  <div class="slide-content">
+    <strong>Slide 3:</strong> Pipeline — Excel → Power Query → Star Schema → DAX → Dashboard.<br>
+    <strong>Slide 4:</strong> Visão Executiva do dashboard aberto — tendência temporal + MRR por plano + perfil de compra.
+  </div>
+
+  <h3>Fala contínua (1,5 min)</h3>
+  <div class="speech">
+    "Obrigado, Fernanda. Para responder essa pergunta, recebemos uma base com
+    uma linha para cada cliente em cada mês — cerca de <strong>3.200 registros</strong>
+    de <strong>360 clientes únicos</strong>, cobrindo janeiro a dezembro de 2025.
+    <span class="pause">[pausa]</span>
+    Passamos por cinco etapas: <em>tratamos os dados</em> no Power Query, criando
+    colunas derivadas como faixa de CSAT e flag de churn. <em>Modelamos em star
+    schema</em> com 4 dimensões — cliente, plano, canal e calendário.
+    <em>Calculamos 15 medidas DAX</em> no Power BI. E <em>validamos cada número</em>
+    comparando com o Excel e com o banco SQLite.
+    <span class="pause">[pausa]</span>
+    Olhando o dashboard, o cenário é claro. Esse gráfico mostra a tendência
+    temporal: o <strong>MRR cresceu forte até agosto</strong> — saiu de R$ 17 mil
+    para R$ 84 mil. Mas a partir de setembro, <strong>as duas linhas param de
+    subir</strong>: MRR cai para R$ 76 mil em dezembro, uma retração de 10% em
+    quatro meses. <em>A aquisição já não está mais compensando o churn.</em>
+    <span class="pause">[pausa]</span>
+    Esse é o cenário que motivou os quatro insights que vamos apresentar. O
+    Eduardo começa pelo mais forte: o uso."
+  </div>
+
+  <div class="tips">
+    <strong>Dica:</strong> não entre em detalhes de Power Query ou DAX. A banca
+    avalia <em>insight de negócio</em>, não implementação. Mencione as ferramentas
+    rapidamente e vá para o que os dados revelaram.
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section class="section" id="eduardo">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-eyebrow">Bloco 3</div>
+      <h2>Insight 1 — Uso · Insight 2 — Atraso</h2>
+    </div>
+    <div class="slide-meta">
+      <span class="slide-time">2 min</span>
+      <span class="speaker-badge">Eduardo</span>
+      <span class="slide-num">Slides 5-6</span>
+    </div>
+  </div>
+
+  <div class="slide-content">
+    <strong>Slide 5:</strong> Retenção — Composição do churn por faixa de acesso (barras) + Engajamento vs CSAT.<br>
+    <strong>Slide 6:</strong> Retenção — Atraso médio: ativos vs cancelados + composição por faixa de atraso.
+  </div>
+
+  <h3>Fala contínua (2 min)</h3>
+  <div class="speech">
+    "Obrigado, Lucas. O primeiro insight derruba uma intuição comum:
+    <strong>churn não está relacionado ao preço do plano.</strong> O que separa
+    quem fica de quem sai é <em>comportamento</em>.
+    <span class="pause">[pausa]</span>
+    Olhem esse gráfico. <strong>62,82% dos cancelamentos</strong> vêm de clientes
+    com <strong>6 a 20 logins por mês</strong>. Já os clientes com 21+ logins
+    representam apenas 17,95% dos cancelamentos — e têm CSAT médio de 8,1.
+    A correlação entre logins e MRR é <strong>0,51</strong>: clientes que usam
+    mais, ficam mais. <em>Baixo uso é o maior preditor de cancelamento que
+    encontramos.</em>
+    <span class="pause">[pausa]</span>
+    O segundo insight é sobre atraso de pagamento, e tem uma nuance importante.
+    Se olharmos a <strong>média</strong>, a história é clara: cancelados atrasam
+    <strong>4,19 dias</strong>, contra <strong>1,89 dias</strong> dos ativos —
+    <em>2,2 vezes mais</em>. Mas quando olhamos a <strong>composição</strong> dos
+    cancelamentos, aparece um dado contraintuitivo: <strong>66,67% dos
+    cancelamentos vieram de clientes que nunca atrasaram.</strong> O churn é
+    multicausal.
+    <span class="pause">[pausa]</span>
+    Porém, quem atrasa, cancela muito mais. Como esses clientes representam uma
+    parcela menor da base, o atraso é um <strong>sinal de risco
+    desproporcional</strong>. E tem uma janela crítica: a faixa de
+    <strong>1 a 15 dias</strong> concentra 28,21% dos cancelamentos. É aqui que
+    a ação acontece.
+    <span class="pause">[transição]</span>
+    O Bruno continua com os insights de plano e canal."
+  </div>
+
+  <div class="anchor">
+    Churn não é sobre preço. É sobre comportamento. E os dois comportamentos que mais pesam são uso baixo e atraso.
+  </div>
+
+  <div class="tips">
+    <strong>Dica:</strong> o insight duplo do atraso (média vs composição) é
+    sofisticado. Enfatize que <em>as duas leituras são válidas</em> — não é
+    contradição, é complementaridade. A banca vai notar.
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section class="section" id="bruno">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-eyebrow">Bloco 4</div>
+      <h2>Insight 3 — Plano · Insight 4 — Canal</h2>
+    </div>
+    <div class="slide-meta">
+      <span class="slide-time">1,5 min</span>
+      <span class="speaker-badge">Bruno Passo</span>
+      <span class="slide-num">Slides 7-8</span>
+    </div>
+  </div>
+
+  <div class="slide-content">
+    <strong>Slide 7:</strong> Retenção — Churn por plano (Básico 29,65% / Profissional 16,30% / Enterprise 9,43%).<br>
+    <strong>Slide 8:</strong> Aquisição — Novos clientes vs taxa de churn por canal.
+  </div>
+
+  <h3>Fala contínua (1,5 min)</h3>
+  <div class="speech">
+    "Obrigado, Eduardo. O terceiro insight é sobre <strong>plano</strong>, e o
+    dado é direto: o plano <strong>Básico tem churn de 29,65%</strong>, contra
+    <strong>16,30% do Profissional</strong> e <strong>9,43% do Enterprise</strong>.
+    São <em>3 vezes mais</em> cancelamentos no Básico do que no Enterprise.
+    <span class="pause">[pausa]</span>
+    A consequência operacional é clara: se a VendeFácil quer reduzir churn de
+    forma eficiente, o <strong>onboarding do Básico</strong> é o ponto de
+    partida. Clientes entram no plano, não veem valor rápido o suficiente, e
+    cancelam.
+    <span class="pause">[pausa]</span>
+    O quarto insight não é sobre um risco, é sobre uma <strong>oportunidade</strong>.
+    Olhando os canais: <strong>Indicação e Vendedor têm a mesma taxa de churn</strong>
+    — 0,22. São os canais mais estáveis da empresa. Já o <strong>Google Ads</strong>,
+    apesar do maior volume, tem o <strong>menor churn da base — 0,19</strong>.
+    <span class="pause">[pausa]</span>
+    Do outro lado, um alerta: clientes de <strong>Redes Sociais</strong> têm a
+    maior taxa de churn — <strong>0,32</strong>, contra 0,19 do Google Ads. Eles
+    compram, mas cancelam rápido. Provavelmente há um desalinhamento entre a
+    expectativa da campanha e a realidade do produto.
+    <span class="pause">[pausa]</span>
+    <strong>Resumindo: o Básico cancela 3 vezes mais que o Enterprise, e Redes
+    Sociais é o canal que mais perde cliente. Dois focos claros para ação.</strong>
+    <span class="pause">[transição]</span>
+    O Josimar vai consolidar essas descobertas em recomendações."
+  </div>
+
+  <div class="anchor">
+    O Básico cancela 3× mais que o Enterprise. E Redes Sociais é o canal que mais perde cliente.
+  </div>
+
+  <div class="tips">
+    <strong>Dica:</strong> reformulamos a fala do CAC. Agora você fala de
+    <em>churn</em> (que está visível no gráfico) e evita afirmar "CAC
+    significativamente menor" (que a banca não conseguiria ver). Mais seguro.
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section class="section" id="josimar">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-eyebrow">Bloco 5</div>
+      <h2>Recomendações Consolidadas + Meta</h2>
+    </div>
+    <div class="slide-meta">
+      <span class="slide-time">1,5 min</span>
+      <span class="speaker-badge">Josimar Torre</span>
+      <span class="slide-num">Slide 9</span>
+    </div>
+  </div>
+
+  <div class="slide-content">
+    <strong>Slide 9:</strong> "Onde agir nos próximos 90 dias" — 5 frentes + meta consolidada (churn 21,67% → 14%).
+  </div>
+
+  <h3>Fala contínua (1,5 min)</h3>
+  <div class="speech">
+    "Obrigado, Bruno. Consolidando os quatro insights, a VendeFácil deveria agir
+    em <strong>cinco frentes nos próximos 90 dias</strong>.
+    <span class="pause">[pausa]</span>
+    <strong>Frente 1 — Onboarding segmentado por plano</strong>, com meta de
+    <em>15 logins por mês nos primeiros 90 dias</em>. Clientes de planos
+    diferentes têm necessidades diferentes.
+    <span class="pause">[pausa]</span>
+    <strong>Frente 2 — Régua de cobrança ativa a partir do 5º dia</strong> de
+    atraso, com contato humano para faturas acima de 15 dias.
+    <span class="pause">[pausa]</span>
+    <strong>Frente 3 — Programa de referral com incentivo financeiro</strong>,
+    para ampliar o canal mais estável da empresa.
+    <span class="pause">[pausa]</span>
+    <strong>Frente 4 — Revisão do ICP de Redes Sociais</strong>, com marketing
+    e comercial alinhados no perfil ideal.
+    <span class="pause">[pausa]</span>
+    E a <strong>Frente 5 é a mais cirúrgica</strong>: revisamos o critério de
+    alto risco e chegamos a <strong>38 clientes prioritários</strong>. São
+    <em>38 nomes, 38 telefones, 38 conversas</em> que podemos ter essa semana.
+    É ação imediata.
+    <span class="pause">[pausa]</span>
+    Se conseguirmos executar essas cinco frentes, <strong>nossa projeção é
+    reter aproximadamente 14 clientes adicionais por semestre</strong> — uma
+    estimativa baseada na diferença entre o churn atual de 21,67% e a meta de
+    14% em 6 meses.
+    <span class="pause">[transição]</span>
+    Para fechar, o Marcelo vai apresentar uma ferramenta que criamos para
+    democratizar o acesso aos dados."
+  </div>
+
+  <div class="anchor">
+    38 nomes, 38 telefones, 38 conversas. Ação imediata.
+  </div>
+
+  <div class="tips">
+    <strong>Dica:</strong> deixamos claro que os "14 clientes" são <em>projeção
+    nossa</em>, não dado do dashboard. Se a banca perguntar, você responde
+    "é estimativa, baseada na diferença entre churn atual e meta".
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section class="section" id="marcelo">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-eyebrow">Bloco 6 · Demonstração ao Vivo</div>
+      <h2>Agente VendeFácil — Text-to-SQL</h2>
+    </div>
+    <div class="slide-meta">
+      <span class="slide-time">2,5 min</span>
+      <span class="speaker-badge violet">Marcelo</span>
+      <span class="slide-num">Slides 10-11</span>
+    </div>
+  </div>
+
+  <div class="slide-content">
+    <strong>Slide 10:</strong> O que é o agente + stack (FastAPI + Gemini/OpenAI + SQLite).<br>
+    <strong>Slide 11:</strong> Demonstração ao vivo no navegador — 3 perguntas.
+  </div>
+
+  <h3>Fala contínua (2,5 min)</h3>
+  <div class="speech violet">
+    "Obrigado, Josimar. Antes de fechar, quero apresentar uma ferramenta que
+    criamos para <strong>democratizar o acesso aos dados</strong>.
+    <span class="pause">[pausa]</span>
+    Uma das dores que identificamos durante o projeto foi: <em>a diretoria
+    precisa de respostas rápidas, mas depende de analistas para consultar a
+    base.</em> Então construímos o <strong>Agente VendeFácil</strong>.
+    <span class="pause">[pausa]</span>
+    Funciona assim: você digita uma pergunta em <strong>português</strong>, e o
+    agente <strong>converte automaticamente em SQL</strong>, executa no banco e
+    devolve o resultado. O mais importante: <strong>ele mostra o SQL
+    utilizado</strong>, então o resultado é 100% auditável. <em>Não é uma
+    caixa-preta.</em>
+    <span class="pause">[pausa]</span>
+    A arquitetura usa <strong>FastAPI</strong> no backend, <strong>Gemini</strong>
+    como LLM principal com <strong>fallback para OpenAI</strong>, e
+    <strong>SQLite</strong> em modo somente leitura. Toda consulta é validada
+    antes de executar — se a IA tentar gerar um comando de escrita, o backend
+    bloqueia.
+    <span class="pause">[pausa — abrir o agente]</span>
+    Deixa eu mostrar funcionando. Vou fazer três perguntas rápidas.
+    <span class="pause">[pausa]</span>
+    <strong>Primeira:</strong> <em>'Quantos clientes ativos existem atualmente?'</em>
+    <span class="pause">[aguardar resposta]</span>
+    Vocês veem que ele retornou <strong>282 clientes</strong>, considerando a
+    data mais recente. Se eu clicar em <strong>'Ver SQL'</strong>, aparece
+    exatamente a consulta que gerou esse número.
+    <span class="pause">[pausa]</span>
+    <strong>Segunda:</strong> <em>'Compare o atraso médio entre ativos e
+    cancelados.'</em>
+    <span class="pause">[aguardar]</span>
+    Olha só — o agente gerou o gráfico automaticamente, mostrando a diferença:
+    ativos com 1,89 dias, cancelados com 4,19. Esse é o mesmo insight que
+    mostramos antes, agora acessível em 10 segundos.
+    <span class="pause">[pausa]</span>
+    <strong>Terceira:</strong> <em>'Qual canal de aquisição tem mais clientes?'</em>
+    <span class="pause">[aguardar]</span>
+    Pronto. Google Ads com 95 clientes. O SQL está lá embaixo, o dado está lá em cima.
+    <span class="pause">[pausa]</span>
+    A mensagem é essa: <strong>o agente não substitui o analista — ele libera
+    o analista para pensar no que importa, enquanto a diretoria resolve o
+    operacional em segundos.</strong>
+    <span class="pause">[transição]</span>
+    Fernanda, para o fechamento."
+  </div>
+
+  <div class="anchor">
+    O agente não substitui o analista — ele libera o analista.
+  </div>
+
+  <div class="tips">
+    <strong>Dicas críticas para o Marcelo:</strong>
+    <ul>
+      <li><strong>Teste o agente 10 minutos antes</strong> da apresentação — confirme que está rodando e com internet</li>
+      <li><strong>Tenha print das 3 respostas salvo</strong> como plano B caso o Wi-Fi falhe</li>
+      <li><strong>Use exatamente as 3 perguntas que ensaiou</strong> — não invente na hora</li>
+      <li><strong>Mostre o "Ver SQL" pelo menos uma vez</strong> — é o diferencial técnico</li>
+      <li><strong>Não deixe passar de 2,5 minutos</strong> — a demo ao vivo é imprevisível</li>
+    </ul>
+  </div>
+
+  <div class="callout violet">
+    <strong>Plano B do Marcelo:</strong> se o agente não funcionar na hora, use
+    prints das 3 telas (clientes ativos, atraso médio, canal com mais clientes)
+    e siga a mesma narrativa. A banca entende que demos ao vivo podem falhar.
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section class="section" id="fernanda-fecha">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-eyebrow">Bloco 7</div>
+      <h2>Encerramento</h2>
+    </div>
+    <div class="slide-meta">
+      <span class="slide-time">1 min</span>
+      <span class="speaker-badge">Fernanda</span>
+      <span class="slide-num">Slide 12</span>
+    </div>
+  </div>
+
+  <div class="slide-content">
+    <strong>Slide 12:</strong> "Retenção é o novo crescimento" + agradecimento + abertura para Q&A.
+  </div>
+
+  <h3>Fala contínua (1 min)</h3>
+  <div class="speech">
+    "Obrigada, Marcelo. Para fechar, uma mensagem central.
+    <span class="pause">[pausa]</span>
+    <strong>A VendeFácil não precisa de mais clientes. Precisa reter melhor os
+    360 que já tem.</strong> O crescimento até agosto mostra que a empresa sabe
+    adquirir. O desafio agora é <em>reter</em>.
+    <span class="pause">[pausa]</span>
+    E os dados mostram que a retenção é possível. Depende menos de preço e mais
+    de <strong>comportamento</strong>: onboarding bem feito, cobrança ativa e
+    ampliação do canal mais estável. Com o <strong>Agente VendeFácil</strong>,
+    a diretoria tem autonomia para acompanhar cada uma dessas frentes em tempo
+    real.
+    <span class="pause">[pausa]</span>
+    Obrigado pela atenção. Estamos à disposição para perguntas."
+  </div>
+
+  <div class="anchor">
+    Retenção é o novo crescimento. A VendeFácil não precisa de mais clientes — precisa reter melhor os 360 que já tem.
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section class="section" id="qa">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-eyebrow">Preparação Crítica</div>
+      <h2>3 Perguntas Difíceis — Respostas Ensaidas</h2>
+    </div>
+  </div>
+
+  <p>
+    Ensaie estas 3 perguntas específicas. Elas são as mais prováveis de aparecer
+    e exigem resposta pronta (30-60 segundos cada).
+  </p>
+
+  <div class="grid two">
+    <div class="card gold">
+      <h4>❓ "Por que o churn caiu de 4% em novembro para 1% em dezembro?"</h4>
+      <p><strong>Quem responde:</strong> Lucas ou Fernanda</p>
+      <p><strong>Resposta:</strong> *"Dezembro é o último mês da base. Como o churn é medido no mês do cancelamento, o número de dezembro reflete apenas cancelamentos daquele mês — e a base já estava menor. É uma característica do dado, não uma melhoria real."*</p>
+    </div>
+
+    <div class="card mint">
+      <h4>❓ "O que vocês querem dizer com 'clientes em alto risco'?"</h4>
+      <p><strong>Quem responde:</strong> Josimar</p>
+      <p><strong>Resposta:</strong> *"Revisamos o critério: antes era qualquer sinal de risco isolado — 256 clientes. Agora é interseção: clientes que têm CSAT baixo E atraso relevante E baixo uso ao mesmo tempo. Chegamos a 38 clientes prioritários, um grupo acionável."*</p>
+    </div>
+
+    <div class="card violet">
+      <h4>❓ "O agente pode dar respostas erradas?"</h4>
+      <p><strong>Quem responde:</strong> Marcelo</p>
+      <p><strong>Resposta:</strong> *"Pode, mas com duas salvaguardas: o SQL é sempre mostrado, então o resultado é auditável. E o backend valida antes de executar — não é caixa-preta. Se a IA errar, o analista vê no SQL."*</p>
+    </div>
+
+    <div class="card beige">
+      <h4>❓ "Como garantem que a base está correta?"</h4>
+      <p><strong>Quem responde:</strong> Lucas ou Fernanda</p>
+      <p><strong>Resposta:</strong> *"Validação cruzada tripla: Excel × Power BI × SQLite. Os principais números — 78 cancelamentos, R$ 781 mil de MRR total, CSAT 8,03 — bateram nas três fontes."*</p>
+    </div>
+  </div>
+
+  <h3>Outras perguntas prováveis</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Pergunta</th><th>Quem responde</th><th>Resposta curta</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Por que o churn do Básico é tão alto?"</td>
+          <td>Bruno Passo</td>
+          <td>Provável desalinhamento de expectativa ou onboarding fraco. Ação: revisar com foco em "time to first value".</td>
+        </tr>
+        <tr>
+          <td>"Correlação 0,51 não é fraca?"</td>
+          <td>Eduardo</td>
+          <td>É moderada. Vem da estrutura de planos, não de um comportamento direto. O gráfico de dispersão mostra isso.</td>
+        </tr>
+        <tr>
+          <td>"Quanto custa manter o agente?"</td>
+          <td>Marcelo</td>
+          <td>Gemini tem tier gratuito; OpenAI é pago por token. Com ~100 consultas/mês, menos de R$ 50.</td>
+        </tr>
+        <tr>
+          <td>"Qual o próximo passo do projeto?"</td>
+          <td>Fernanda</td>
+          <td>Fase 2: modelo preditivo de churn com validação temporal + integração do agente no CRM.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout gold">
+    <strong>Regra de ouro no Q&A:</strong> responda em até 60 segundos. Se for
+    muito técnica, ofereça: "Posso detalhar depois com a documentação do
+    projeto. Resumindo: [resposta em uma frase]". Nunca invente número — se não
+    souber, diga "não medimos isso especificamente".
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section class="section" id="checklist">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-eyebrow">Checklist Final</div>
+      <h2>Antes de Subir no Palco</h2>
+    </div>
+  </div>
+
+  <h3>✅ Nomes corretos</h3>
+  <ul>
+    <li><strong>Bruno Passo</strong> (sem "s" final)</li>
+    <li><strong>Josimar Torre</strong> (sem "s" final)</li>
+  </ul>
+
+  <h3>✅ Sobre o conteúdo</h3>
+  <ul>
+    <li>Dashboard aberto em aba separada, pronto para mostrar</li>
+    <li>Agente rodando e testado (responsabilidade do Marcelo)</li>
+    <li>Cada integrante sabe exatamente qual bloco vai falar (uma vez só)</li>
+    <li>As 3 perguntas difíceis têm respostas ensaiadas</li>
+    <li><strong>Bruno reformulou a fala sobre CAC</strong> — não fala "significativamente menor"</li>
+    <li><strong>Josimar deixou claro que "14 clientes" é projeção</strong></li>
+  </ul>
+
+  <h3>✅ Sobre o tempo</h3>
+  <ul>
+    <li>Ensaio geral cronometrado em até 12 minutos</li>
+    <li>Ensaio com perguntas simuladas em até 15 minutos</li>
+    <li>Demo do agente ensaiada em exatamente 2,5 minutos</li>
+    <li><strong>Se estourar tempo:</strong> cortar detalhes do Lucas (método), depois reduzir demo do agente para 2 perguntas</li>
+    <li><strong>NUNCA cortar:</strong> os 4 insights (Eduardo + Bruno) e a Frente 5 (Josimar)</li>
+  </ul>
+
+  <h3>✅ Sobre a condução</h3>
+  <ul>
+    <li>Cada pessoa fala <strong>uma vez</strong> — sem interrupções</li>
+    <li>Transição limpa: ao terminar, olha para o próximo e passa</li>
+    <li>Fala calma, ritmo pausado, olhar para a banca</li>
+    <li>Slides mudam quando a fala muda de bloco</li>
+    <li>Celular no silencioso e cronômetro visível</li>
+    <li>Wi-Fi testado 10 minutos antes (para o agente)</li>
+  </ul>
+
+  <h3>✅ Sobre as respostas</h3>
+  <ul>
+    <li>Nunca inventar número. Se não souber, dizer "não medimos isso"</li>
+    <li>Citar a fonte quando der (dado do dashboard, SQL do agente)</li>
+    <li>Reconhecer limitações — não fingir que o projeto resolveu tudo</li>
+    <li>Uma pessoa responde por vez. Se outro quiser complementar, aguarda a vez</li>
+  </ul>
+
+  <h3>✅ Frases-âncora para lembrar</h3>
+  <ul>
+    <li><em>"Churn não é sobre preço. É sobre comportamento."</em> (Eduardo)</li>
+    <li><em>"O Básico cancela 3× mais que o Enterprise."</em> (Bruno)</li>
+    <li><em>"38 nomes, 38 telefones, 38 conversas."</em> (Josimar)</li>
+    <li><em>"O agente não substitui o analista — ele libera o analista."</em> (Marcelo)</li>
+    <li><em>"A VendeFácil não precisa de mais clientes. Precisa reter melhor os 360 que já tem."</em> (Fernanda)</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Mensagem final:</strong> a banca não espera perfeição. Espera
+    <em>clareza</em>. Se vocês conseguirem fazer uma pessoa leiga entender
+    "churn é comportamento, não preço", e "o agente democratiza o dado",
+    a apresentação foi um sucesso.
+  </div>
+</section>
+
+<p class="footer">
+  Grupo 7 · Projeto Integrador · Trilha Dados · VendeFácil · Roteiro de Apresentação
+</p>
+
+</main>
+
+<script>
+/* ============================================================
+   TIMER
+   ============================================================ */
+let timerInterval = null;
+let timerSeconds = 0;
+let timerRunning = false;
+
+function updateTimerDisplay(){
+  const m = String(Math.floor(timerSeconds/60)).padStart(2,'0');
+  const s = String(timerSeconds % 60).padStart(2,'0');
+  const display = document.getElementById('timerDisplay');
+  display.textContent = m + ':' + s;
+  if(timerSeconds >= 15*60){
+    display.style.color = '#c44d58';
+  } else if(timerSeconds >= 12*60){
+    display.style.color = '#7a5a00';
+  } else {
+    display.style.color = '';
+  }
+}
+
+function toggleTimer(){
+  const btn = document.getElementById('btnStart');
+  if(timerRunning){
+    clearInterval(timerInterval);
+    timerRunning = false;
+    btn.textContent = 'Continuar';
+  } else {
+    timerInterval = setInterval(() => {
+      timerSeconds++;
+      updateTimerDisplay();
+    }, 1000);
+    timerRunning = true;
+    btn.textContent = 'Pausar';
+  }
+}
+
+function resetTimer(){
+  clearInterval(timerInterval);
+  timerSeconds = 0;
+  timerRunning = false;
+  document.getElementById('btnStart').textContent = 'Iniciar';
+  updateTimerDisplay();
+}
+
+updateTimerDisplay();
+
+/* ============================================================
+   EXPORTAÇÃO PARA WORD (.docx)
+   ============================================================ */
+
+function xmlEscape(s){
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&apos;');
+}
+
+function elementToWord(el){
+  const tag = el.tagName.toLowerCase();
+
+  if(tag === 'table'){
+    const rows = [...el.querySelectorAll('tr')].map(tr => {
+      const cells = [...tr.children].map(td => {
+        const isHeader = td.tagName.toLowerCase() === 'th';
+        const runProps = isHeader
+          ? '<w:rPr><w:b/><w:color w:val="FFFFFF"/></w:rPr>'
+          : '';
+        const shd = isHeader
+          ? '<w:shd w:val="clear" w:color="auto" w:fill="2F927E"/>'
+          : '';
+        const text = xmlEscape(td.innerText.trim().replace(/\s+/g,' '));
+        return `<w:tc><w:tcPr>${shd}<w:tcW w:w="2400" w:type="dxa"/></w:tcPr><w:p><w:r>${runProps}<w:t xml:space="preserve">${text}</w:t></w:r></w:p></w:tc>`;
+      }).join('');
+      return `<w:tr>${cells}</w:tr>`;
+    }).join('');
+
+    return `<w:tbl><w:tblPr><w:tblStyle w:val="TableGrid"/><w:tblW w:w="0" w:type="auto"/><w:tblBorders>
+      <w:top w:val="single" w:sz="4" w:color="D8DFEB"/>
+      <w:left w:val="single" w:sz="4" w:color="D8DFEB"/>
+      <w:bottom w:val="single" w:sz="4" w:color="D8DFEB"/>
+      <w:right w:val="single" w:sz="4" w:color="D8DFEB"/>
+      <w:insideH w:val="single" w:sz="4" w:color="D8DFEB"/>
+      <w:insideV w:val="single" w:sz="4" w:color="D8DFEB"/>
+    </w:tblBorders></w:tblPr>${rows}</w:tbl><w:p/>`;
+  }
+
+  if(tag === 'ul' || tag === 'ol'){
+    const items = [...el.children].filter(li => li.tagName.toLowerCase() === 'li');
+    const isOrdered = tag === 'ol';
+    return items.map((li, i) => {
+      const clone = li.cloneNode(true);
+      clone.querySelectorAll('ul,ol').forEach(n => n.remove());
+      const text = xmlEscape(clone.innerText.trim().replace(/\s+/g,' '));
+      const numbering = isOrdered ? `${i+1}. ` : '• ';
+      return `<w:p><w:pPr><w:ind w:left="360" w:hanging="360"/></w:pPr><w:r><w:t xml:space="preserve">${numbering}${text}</w:t></w:r></w:p>`;
+    }).join('');
+  }
+
+  if(tag === 'pre'){
+    const lines = el.innerText.split('\n');
+    return lines.map(line =>
+      `<w:p><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="F0F4F8"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Consolas" w:hAnsi="Consolas"/><w:sz w:val="16"/></w:rPr><w:t xml:space="preserve">${xmlEscape(line)}</w:t></w:r></w:p>`
+    ).join('');
+  }
+
+  const classList = el.className || '';
+  let fill = null;
+  if(classList.includes('speech')) fill = 'F8FAFC';
+  else if(classList.includes('anchor')) fill = 'FFF9EC';
+  else if(classList.includes('tips')) fill = 'FFF9EC';
+  else if(classList.includes('callout')) fill = 'EFFBF8';
+  else if(classList.includes('slide-content')) fill = 'FBFCFE';
+  if(fill){
+    const text = xmlEscape(el.innerText.trim().replace(/\s+/g,' '));
+    return `<w:p><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="${fill}"/><w:ind w:left="200" w:right="200"/></w:pPr><w:r><w:t xml:space="preserve">${text}</w:t></w:r></w:p>`;
+  }
+
+  if(tag === 'p'){
+    const text = xmlEscape(el.innerText.trim().replace(/\s+/g,' '));
+    if(!text) return '';
+    return `<w:p><w:r><w:t xml:space="preserve">${text}</w:t></w:r></w:p>`;
+  }
+
+  return '';
+}
+
+function walk(el, out){
+  const tag = el.tagName ? el.tagName.toLowerCase() : '';
+
+  if(['h1','h2','h3','h4','p'].includes(tag)){
+    const rendered = elementToWord(el);
+    if(rendered) out.push(rendered);
+    return;
+  }
+
+  if(['pre','table','ul','ol'].includes(tag)){
+    const rendered = elementToWord(el);
+    if(rendered) out.push(rendered);
+    return;
+  }
+
+  if(['script','style','button','nav'].includes(tag)) return;
+  if(el.classList && (el.classList.contains('actions') || el.classList.contains('toc') || el.classList.contains('timer-bar') || el.classList.contains('authors'))) return;
+
+  [...el.children].forEach(child => walk(child, out));
+}
+
+async function exportDOCX(ev){
+  const btn = ev.currentTarget;
+  const old = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = 'Gerando Word…';
+
+  try{
+    const report = document.getElementById('report');
+    const blocks = [];
+    walk(report, blocks);
+    const bodyXml = blocks.join('');
+
+    const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:body>
+    ${bodyXml}
+    <w:sectPr>
+      <w:pgSz w:w="11906" w:h="16838"/>
+      <w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="720" w:footer="720" w:gutter="0"/>
+    </w:sectPr>
+  </w:body>
+</w:document>`;
+
+    const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:docDefaults>
+    <w:rPrDefault>
+      <w:rPr>
+        <w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/>
+        <w:sz w:val="22"/><w:szCs w:val="22"/>
+      </w:rPr>
+    </w:rPrDefault>
+    <w:pPrDefault>
+      <w:pPr><w:spacing w:after="120" w:line="276" w:lineRule="auto"/></w:pPr>
+    </w:pPrDefault>
+  </w:docDefaults>
+
+  <w:style w:type="paragraph" w:default="1" w:styleId="Normal">
+    <w:name w:val="Normal"/><w:qFormat/>
+  </w:style>
+
+  <w:style w:type="paragraph" w:styleId="Title">
+    <w:name w:val="Title"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:qFormat/>
+    <w:pPr><w:spacing w:before="240" w:after="240"/></w:pPr>
+    <w:rPr><w:b/><w:color w:val="1A2B4A"/><w:sz w:val="48"/><w:szCs w:val="48"/></w:rPr>
+  </w:style>
+
+  <w:style w:type="paragraph" w:styleId="Heading1">
+    <w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:qFormat/>
+    <w:pPr><w:keepNext/><w:spacing w:before="360" w:after="160"/><w:outlineLvl w:val="0"/></w:pPr>
+    <w:rPr><w:b/><w:color w:val="1A2B4A"/><w:sz w:val="32"/><w:szCs w:val="32"/></w:rPr>
+  </w:style>
+
+  <w:style w:type="paragraph" w:styleId="Heading2">
+    <w:name w:val="heading 2"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:qFormat/>
+    <w:pPr><w:keepNext/><w:spacing w:before="280" w:after="120"/><w:outlineLvl w:val="1"/></w:pPr>
+    <w:rPr><w:b/><w:color w:val="2F927E"/><w:sz w:val="26"/><w:szCs w:val="26"/></w:rPr>
+  </w:style>
+
+  <w:style w:type="paragraph" w:styleId="Heading3">
+    <w:name w:val="heading 3"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:qFormat/>
+    <w:pPr><w:keepNext/><w:spacing w:before="220" w:after="100"/><w:outlineLvl w:val="2"/></w:pPr>
+    <w:rPr><w:b/><w:color w:val="1A2B4A"/><w:sz w:val="24"/><w:szCs w:val="24"/></w:rPr>
+  </w:style>
+
+  <w:style w:type="table" w:styleId="TableGrid">
+    <w:name w:val="Table Grid"/>
+    <w:tblPr><w:tblBorders>
+      <w:top w:val="single" w:sz="4" w:color="D8DFEB"/>
+      <w:left w:val="single" w:sz="4" w:color="D8DFEB"/>
+      <w:bottom w:val="single" w:sz="4" w:color="D8DFEB"/>
+      <w:right w:val="single" w:sz="4" w:color="D8DFEB"/>
+      <w:insideH w:val="single" w:sz="4" w:color="D8DFEB"/>
+      <w:insideV w:val="single" w:sz="4" w:color="D8DFEB"/>
+    </w:tblBorders></w:tblPr>
+  </w:style>
+</w:styles>`;
+
+    const contentTypes = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+  <Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>
+</Types>`;
+
+    const rels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`;
+
+    const docRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+</Relationships>`;
+
+    const zip = new JSZip();
+    zip.file('[Content_Types].xml', contentTypes);
+    zip.folder('_rels').file('.rels', rels);
+    const word = zip.folder('word');
+    word.file('document.xml', documentXml);
+    word.file('styles.xml', stylesXml);
+    word.folder('_rels').file('document.xml.rels', docRels);
+
+    const blob = await zip.generateAsync({
+      type: 'blob',
+      mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    });
+
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'Roteiro_Apresentacao_Grupo7_VendeFacil.docx';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }catch(e){
+    console.error(e);
+    alert('Não foi possível gerar o Word. Verifique sua conexão para carregar a biblioteca JSZip.');
+  }finally{
+    btn.disabled = false;
+    btn.innerHTML = old;
+  }
+}
+</script>
+
+</body>
+</html>
