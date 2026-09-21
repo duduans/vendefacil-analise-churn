@@ -69,7 +69,21 @@ vendefacil-analise-churn/
 
 ## 🖼️ Visão do Dashboard
 
-> *Adicione aqui prints das páginas "Visão Executiva" e "Retenção e Churn" do dashboard.*
+### Visão Executiva
+![Visão Executiva do Dashboard VendeFácil](assets/01-visao-executiva.png)
+*KPIs de contexto e tendência temporal do MRR e base de clientes ao longo de 2025.*
+
+### Retenção e Churn
+![Retenção e Churn — Principais preditores de cancelamento](assets/02-retençao-churn.png)
+*Análise dos principais preditores de cancelamento: uso, plano, atraso de pagamento e LTV.*
+
+### Produto e Suporte
+![Produto e Suporte — Engajamento, satisfação e risco](assets/03-produto-suporte.png)
+*Correlação entre engajamento, satisfação e risco, com tabela operacional de clientes prioritários.*
+
+### Aquisição e Risco
+![Aquisição e Risco — Canais, CAC e correlação](assets/04-aquisicao-risco.png)
+*Análise dos canais de aquisição, CAC, MRR e correlação entre engajamento e atraso de pagamento.*
 
 ## 🚀 Recomendações do Projeto
 
