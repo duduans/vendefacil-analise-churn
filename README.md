@@ -74,7 +74,7 @@ vendefacil-analise-churn/
 *KPIs de contexto e tendência temporal do MRR e base de clientes ao longo de 2025.*
 
 ### Retenção e Churn
-![Retenção e Churn — Principais preditores de cancelamento](assets/02-retençao-churn.png)
+![Retenção e Churn — Principais preditores de cancelamento](assets/02-retencao-churn.png)
 *Análise dos principais preditores de cancelamento: uso, plano, atraso de pagamento e LTV.*
 
 ### Produto e Suporte
