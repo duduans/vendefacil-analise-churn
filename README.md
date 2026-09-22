@@ -77,7 +77,7 @@ vendefacil-analise-churn/
 ![Retenção e Churn — Principais preditores de cancelamento](assets/02-retencao-churn.png)
 *Análise dos principais preditores de cancelamento: uso, plano, atraso de pagamento e LTV.*
 
-### Produto e Suporte
+### Produto
 ![Produto e Suporte — Engajamento, satisfação e risco](assets/03-produto-suporte.png)
 *Correlação entre engajamento, satisfação e risco, com tabela operacional de clientes prioritários.*
 
