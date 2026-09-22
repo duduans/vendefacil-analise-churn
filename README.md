@@ -92,7 +92,7 @@ Plano de ação de 90 dias, com 5 frentes prioritárias:
 1. **Onboarding segmentado por plano** — meta de 15 logins/mês nos primeiros 90 dias, foco no Básico.
 2. **Régua de cobrança ativa** — gatilho automático no 5º dia de atraso.
 3. **Programa de referral** — incentivo financeiro para ampliar o canal de menor risco.
-4. **Realinhemento de ICP de Redes Sociais** — qualificação estrita das campanhas.
+4. **Realinhamento de ICP de Redes Sociais** — qualificação estrita das campanhas.
 5. **Resgate ativo dos 38 clientes de altíssimo risco** — ação proativa imediata.
 
 ## 👥 Autores e Contribuições
