@@ -55,16 +55,19 @@ Ferramenta criada para democratizar o acesso aos dados pela liderança, sem depe
 Toda resposta exibe o SQL gerado, garantindo **auditabilidade total** do resultado.
 
 ## 📂 Estrutura do Repositório
+
+```
 vendefacil-analise-churn/
 ├── data/
-│ ├── raw/ # dataset_vendefacil_saas_junior.xlsx
-│ └── processes/ # dimensoes_star_schema_vendefacil.xlsx
+│   ├── raw/              # dataset_vendefacil_saas_junior.xlsx
+│   └── processes/        # dimensoes_star_schema_vendefacil.xlsx
 ├── powerbi/
-│ └── vendefacil_dashboard.pbix
+│   └── vendefacil_dashboard.pbix
 ├── docs/
-│ ├── Relatorio_Final_VendeFacil.pdf
-│ └── roteiro_apresentacao.html
+│   ├── Relatorio_Final_VendeFacil.pdf
+│   └── roteiro_apresentacao.html
 └── README.md
+```
 
 
 ## 🖼️ Visão do Dashboard
